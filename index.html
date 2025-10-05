@@ -198,7 +198,7 @@
     }
     .modal-overlay.show .modal-content{transform:scale(1);opacity:1}
     .modal-close{
-      position:absolute;top:20px;right:20px;
+      position:absolute;top:20px;right:20px;z-index:10;
       background:rgba(255,124,0,0.1);border:none;
       width:32px;height:32px;border-radius:16px;
       color:#fff;cursor:pointer;
@@ -214,6 +214,161 @@
     }
     
     footer{padding:28px;text-align:center;color:var(--muted);font-size:13px}
+  </style>
+  <style>
+    @media (max-width: 768px) {
+  /* General layout */
+  body {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 12px 16px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .filters .tag {
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  .mods {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 10px;
+  }
+
+  .mod-card {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .mod-card img {
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .mod-info {
+    padding: 10px;
+  }
+
+  .mod-info h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .mod-info p {
+    font-size: 13px;
+  }
+
+  .mod-info .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .mod-info .tag {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  /* Modal responsiveness */
+  .modal {
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    max-height: 85vh;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+    overflow-y: auto;
+    padding: 16px;
+    background: var(--surface);
+    animation: slideUp 0.3s ease;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  #modal-body > div {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  #modal-body > div > div {
+    min-width: auto !important;
+    width: 100% !important;
+  }
+
+  /* Meta info grid */
+  #modal-body div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 12px !important;
+  }
+
+  #modal-body strong {
+    font-size: 13px !important;
+  }
+
+  #modal-body,
+  .modal-content {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Close button */
+  .modal-close {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+
+  /* Buttons full width */
+  #modal-body a.btn,
+  #modal-body button.btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Slide-up animation */
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
   </style>
 </head>
 <body>
