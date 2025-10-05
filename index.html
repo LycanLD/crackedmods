@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lycan's COD:M Cracked Mods — Collection</title>
-  <meta name="description" content="Static showcase page for Lycan's COD:M cracked mods collection." />
+  <title>Lycan's COD:M Cracked Mods Collection</title>
+  <meta name="description" content="My online collection of cracked-paid COD:M mods." />
   <style>
     :root{
       --bg:#0f1115;
@@ -27,16 +27,120 @@
     }
     
     html,body{height:100%;margin:0;background:linear-gradient(180deg,#190f07 0%, #1b1209 60%);color:#f6efe6}
-    header{display:flex;align-items:center;gap:18px;padding:22px;backdrop-filter:blur(6px);animation:slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1)}
-    .brand{display:flex;gap:12px;align-items:center}
+    header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 26px;
+  backdrop-filter: blur(8px);
+  background: rgba(15, 17, 21, 0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1 1 300px;
+  min-width: 240px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(255,124,0,0.18);
+  flex-shrink: 0;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
+.subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--muted);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+.nav-link:hover {
+  color: #fff;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.search {
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 8px 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+}
+.search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size: 14px;
+  width: 100%;
+}
+
     .logo{width:56px;height:56px;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(255,124,0,0.18)}
     .logo img{width:100%;height:100%;object-fit:cover}
     .title{font-size:18px;font-weight:700}
     .subtitle{font-size:12px;color:var(--muted);margin-top:4px}
-
-    .controls{margin-left:auto;display:flex;gap:12px;align-items:center}
-    .search{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:12px;display:flex;align-items:center;gap:8px;min-width:240px}
-    .search input{background:transparent;border:none;outline:none;color:inherit;font-size:14px}
     .btn{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);cursor:pointer;color:#fff;text-decoration:none}
     .btn.primary{background:var(--accent-gradient);box-shadow:0 8px 30px rgba(255,124,0,0.12);font-weight:600;color:#fff}
 
@@ -84,6 +188,8 @@
       background:var(--modal-bg);
       padding:32px;border-radius:24px;
       max-width:800px;width:92vw;
+      max-height: 80vh;
+      overflow-y: auto;
       box-shadow:0 25px 50px -12px rgba(0,0,0,0.7);
       position:relative;color:#e6eef6;
       transform:scale(0.95);opacity:0;
@@ -111,21 +217,29 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="logo">
-        <img src="images/avatar.png" alt="Lycan">
-      </div>
-      <div>
-        <div class="title">Lycan's COD:M — Cracked Mods</div>
-        <div class="subtitle">Curated collection • previews • compatibility • download links</div>
-      </div>
+<header>
+  <div class="brand">
+    <div class="logo">
+      <img src="images/avatar.png" alt="Lycan">
     </div>
-    <div class="controls">
-      <div class="search"><input id="q" placeholder="Search mods..." /></div>
-      <!-- Removed Add Mod button -->
+    <div>
+      <div class="title">Lycan's COD:M Cracked Mods Collection</div>
+      <div class="subtitle">My online collection of cracked-paid COD:M mods.</div>
     </div>
-  </header>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="contact.html" class="nav-link">Contact Us</a>
+    <a href="donate.html" class="nav-link">Donate</a>
+  </nav>
+
+  <div class="controls">
+    <div class="search">
+      <input id="q" placeholder="Search mods..." />
+    </div>
+  </div>
+</header>
 
   <main>
     <div class="meta">
@@ -154,7 +268,8 @@
   </div>
 
   <footer>Made with 🐺 by Lycan</footer>
-
+  <footer>    Disclaimer: Lycan Resources provides educational and performance optimization tools for lawful personal use only. We do not promote, distribute, or endorse cheating, hacking, or any unauthorized modification of software. Use of resources should comply with all applicable laws.
+</footer>
   <script>
     let allMods = [];
     let activeTag = 'all';
@@ -232,30 +347,15 @@
       render(filterMods(allMods));
     });
 
-    // Get file's last modified date
-    async function getModLastUpdate(modname) {
-      try {
-        const response = await fetch(`/${modname}/lib123.so`, { method: 'HEAD' });
-        if (response.ok) {
-          const lastModified = response.headers.get('last-modified');
-          return lastModified ? new Date(lastModified).toLocaleDateString() : null;
-        }
-      } catch (err) {
-        console.warn(`Could not fetch last update for ${modname}`, err);
-      }
-      return null;
-    }
-
     // Modal logic
-    async function showModal(mod) {
-      const lastUpdate = mod.modname ? await getModLastUpdate(mod.modname) : null;
+    function showModal(mod) {
       const tagBadges = mod.tags?.map(t => `<div class="badge" role="tag">${t}</div>`).join('') || '';
       
       modalBody.innerHTML = `
         <div style="display:flex;flex-wrap:wrap;gap:32px;">
-          <div style="flex:1 1 280px;min-width:260px;">
+          <div style="flex:1 1 600px;min-width:560px;">
             <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
-              <img src="${mod.thumb}" alt="${mod.title}" style="width:100%;display:block;transform:scale(1.01);" />
+              <img src="${mod.thumb}" alt="${mod.title}" style="width:100%;display:block;transform:scale(1.05);" />
               <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);"></div>
             </div>
             
@@ -276,6 +376,12 @@
 
             <div style="font-size:14px;line-height:1.8;background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);">
               <div style="display:grid;grid-template-columns:120px 1fr;gap:8px;">
+
+                <div><strong>Author:</strong></div>
+                <div>${mod.author || 'N/A'}</div>
+
+                <div><strong>Cracker:</strong></div>
+                <div>${mod.cracker || 'N/A'}</div>
                 <div><strong>Version:</strong></div>
                 <div>${mod.version || 'Unknown'}</div>
                 
@@ -286,7 +392,13 @@
                 <div>${mod.size || 'N/A'}</div>
                 
                 <div><strong>Last Update:</strong></div>
-                <div>${lastUpdate || mod.updated || 'N/A'}</div>
+                <div>${mod.lastUpdate || 'N/A'}</div>
+
+                <div><strong>Bypass:</strong></div>
+                <div>${mod.bypass || 'N/A'}</div>
+
+                <div><strong>Package Mode:</strong></div>
+                <div>${mod.packageMode || 'N/A'}</div>
               </div>
             </div>
 

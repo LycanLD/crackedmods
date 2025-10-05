@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Us - Lycan Resources</title>
+  <meta name="description" content="Contact page for Lycan Resources." />
+  <style>
+    :root{
+      --bg:#0f1115;
+      --card:#111318;
+      --muted:#b4a79d;
+      --accent:#ff7c00;
+      --accent-gradient: linear-gradient(135deg, #ff7c00, #ffa149);
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:16px;
+      --modal-bg: rgba(15, 17, 21, 0.95);
+      --page-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#190f07 0%, #1b1209 60%);color:#f6efe6}
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 26px;
+      backdrop-filter: blur(8px);
+      background: rgba(15, 17, 21, 0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(255,124,0,0.18)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .title{font-size:18px;font-weight:700}
+    .subtitle{font-size:12px;color:var(--muted);margin-top:4px}
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-gradient);
+      transition: width 0.3s ease;
+      border-radius: 1px;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    main{padding:26px;max-width:1200px;margin:0 auto;}
+    footer{padding:28px;text-align:center;color:var(--muted);font-size:13px;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img src="images/avatar.png" alt="Lycan">
+      </div>
+      <div>
+        <div class="title">Lycan's COD:M — Cracked Mods</div>
+        <div class="subtitle">Curated collection • previews • compatibility • download links</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="contact.html">Contact Us</a>
+      <a class="nav-link" href="donate.html">Donate</a>
+    </div>
+    <div class="controls"></div>
+  </header>
+  <main>
+    <h1>Contact Us</h1>
+    <p>If you have any questions or inquiries, please reach out to us at <a href="mailto:tranlongdo25@gmail.com" style="color:var(--accent);">tranlongdo25@gmail.com</a> or <a href="mailto:longdotailz@gmail.com" style="color:var(--accent);">longdotailz@gmail.com</a>.</p>
+    <section id="discord-invite" style="margin-top: 24px; display: flex; align-items: center; gap: 12px;">
+      <img id="discord-icon" src="" alt="Discord Server Icon" style="width: 48px; height: 48px; border-radius: 12px; display: none;" />
+      <a id="discord-link" href="https://discord.com/invite/d9BS7FPpjR" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600; font-size: 16px; text-decoration: none;">
+        Join our Discord Server
+      </a>
+    </section>
+    <script>
+      async function fetchDiscordInvite() {
+        try {
+          const response = await fetch('https://discord.com/api/invites/d9BS7FPpjR?with_counts=true&with_expiration=true');
+          if (!response.ok) throw new Error('Network response was not ok');
+          const data = await response.json();
+          const iconUrl = data.guild.icon ? `https://cdn.discordapp.com/icons/${data.guild.id}/${data.guild.icon}.png?size=64` : '';
+          const serverName = data.guild.name || 'Discord Server';
+          const discordIcon = document.getElementById('discord-icon');
+          const discordLink = document.getElementById('discord-link');
+          if (iconUrl) {
+            discordIcon.src = iconUrl;
+            discordIcon.style.display = 'inline-block';
+          }
+          discordLink.textContent = `Join ${serverName} Discord Server`;
+          discordLink.href = `https://discord.com/invite/d9BS7FPpjR`;
+        } catch (error) {
+          console.error('Failed to fetch Discord invite info:', error);
+        }
+      }
+      fetchDiscordInvite();
+    </script>
+  </main>
+  <footer>
+    Disclaimer: Lycan Resources provides educational and performance optimization tools for lawful personal use only. We do not promote, distribute, or endorse cheating, hacking, or any unauthorized modification of software. Use of resources should comply with all applicable laws.
+  </footer>
+</body>
+</html>
