@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lycan's COD:M Cracked Mods — Collection</title>
+  <meta name="description" content="Static showcase page for Lycan's COD:M cracked mods collection." />
+  <style>
+    :root{
+      --bg:#0f1115;
+      --card:#111318;
+      --muted:#b4a79d;
+      --accent:#ff7c00;
+      --accent-gradient: linear-gradient(135deg, #ff7c00, #ffa149);
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:16px;
+      --modal-bg: rgba(15, 17, 21, 0.95);
+      --page-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#190f07 0%, #1b1209 60%);color:#f6efe6}
+    header{display:flex;align-items:center;gap:18px;padding:22px;backdrop-filter:blur(6px);animation:slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(255,124,0,0.18)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .title{font-size:18px;font-weight:700}
+    .subtitle{font-size:12px;color:var(--muted);margin-top:4px}
+
+    .controls{margin-left:auto;display:flex;gap:12px;align-items:center}
+    .search{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:12px;display:flex;align-items:center;gap:8px;min-width:240px}
+    .search input{background:transparent;border:none;outline:none;color:inherit;font-size:14px}
+    .btn{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);cursor:pointer;color:#fff;text-decoration:none}
+    .btn.primary{background:var(--accent-gradient);box-shadow:0 8px 30px rgba(255,124,0,0.12);font-weight:600;color:#fff}
+
+    main{padding:26px;max-width:1200px;margin:0 auto}
+    .meta{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+    .stats{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:13px}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{padding:6px 10px;border-radius:999px;background:var(--glass-2);font-size:13px;color:var(--muted);border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+    .tag.active{background:linear-gradient(90deg,rgba(255,124,0,0.12),rgba(255,161,73,0.06));color:#fff6ea;border-color:rgba(255,124,0,0.28)}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:20px}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+      border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.03);
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation:fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity:0;animation-fill-mode:forwards;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 40px rgba(2,6,23,0.6);
+      border-color:rgba(255,124,0,0.2);
+    }
+    .thumb{height:140px;border-radius:10px;background-size:cover;background-position:center;overflow:hidden;display:block}
+    .card-body{padding:10px 6px}
+    .card-title{font-weight:700;margin:6px 0;font-size:15px}
+    .card-sub{font-size:12px;color:var(--muted);margin-bottom:8px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{font-size:12px;padding:6px 12px;border-radius:8px;background:rgba(255,124,0,0.15);color:#fff;border:1px solid rgba(255,124,0,0.3);transition:all 0.2s ease;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
+    .badge:hover{background:rgba(255,124,0,0.25);border-color:rgba(255,124,0,0.4);transform:translateY(-1px)}
+    .card-footer{display:flex;gap:8px;align-items:center;margin-top:10px}
+    .download{flex:1}
+    .small{font-size:12px;color:var(--muted)}
+    
+    .modal-overlay{
+      position:fixed;top:0;left:0;width:100vw;height:100vh;
+      background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);
+      z-index:1000;align-items:center;justify-content:center;
+      opacity:0;visibility:hidden;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display:flex;
+    }
+    .modal-overlay.show{opacity:1;visibility:visible}
+    .modal-content{
+      background:var(--modal-bg);
+      padding:32px;border-radius:24px;
+      max-width:800px;width:92vw;
+      box-shadow:0 25px 50px -12px rgba(0,0,0,0.7);
+      position:relative;color:#e6eef6;
+      transform:scale(0.95);opacity:0;
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border:1px solid rgba(255,255,255,0.05);
+    }
+    .modal-overlay.show .modal-content{transform:scale(1);opacity:1}
+    .modal-close{
+      position:absolute;top:20px;right:20px;
+      background:rgba(255,124,0,0.1);border:none;
+      width:32px;height:32px;border-radius:16px;
+      color:#fff;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      font-size:24px;transition:all 0.2s ease;
+      border:1px solid rgba(255,124,0,0.2);
+      line-height:0;padding-bottom:2px;
+    }
+    .modal-close:hover{
+      background:rgba(255,124,0,0.2);
+      transform:rotate(90deg);
+      border-color:rgba(255,124,0,0.3);
+    }
+    
+    footer{padding:28px;text-align:center;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img src="images/avatar.png" alt="Lycan">
+      </div>
+      <div>
+        <div class="title">Lycan's COD:M — Cracked Mods</div>
+        <div class="subtitle">Curated collection • previews • compatibility • download links</div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="search"><input id="q" placeholder="Search mods..." /></div>
+      <!-- Removed Add Mod button -->
+    </div>
+  </header>
+
+  <main>
+    <div class="meta">
+      <div class="stats">📦 <strong id="count">0</strong> mods</div>
+    </div>
+
+  <div class="filters" id="filters">
+    <div class="tag active" data-tag="all">All</div>
+    <div class="tag" data-tag="Aimbot">Aimbot (Aim)</div>
+    <div class="tag" data-tag="ESP/Visuals">ESP / Visuals</div>
+    <div class="tag" data-tag="Skin/Skinhacks">Skin / Skinhacks</div>
+    <div class="tag" data-tag="Memory/Blatant">Memory / Blatant</div>
+    <div class="tag" data-tag="Other/Misc">Other / Misc</div>
+    <div class="tag" data-tag="Latest">Latest</div>
+    <div class="tag" data-tag="Outdated">Outdated</div>
+  </div>
+
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <div id="modal" class="modal-overlay">
+    <div id="modal-content" class="modal-content">
+      <button id="modal-close" class="modal-close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>Made with 🐺 by Lycan</footer>
+
+  <script>
+    let allMods = [];
+    let activeTag = 'all';
+
+    async function loadMods() {
+      try {
+        const res = await fetch('mods.json');
+        const mods = await res.json();
+        allMods = mods;
+        render(filterMods(allMods));
+      } catch (err) {
+        console.error('Failed to load mods.json', err);
+      }
+    }
+
+    const grid = document.getElementById('grid');
+    const q = document.getElementById('q');
+    const count = document.getElementById('count');
+    const filters = document.getElementById('filters');
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    const modalClose = document.getElementById('modal-close');
+
+    function filterMods(mods) {
+      let filtered = mods;
+      if (activeTag !== 'all') {
+        filtered = filtered.filter(m => m.tags && m.tags.includes(activeTag));
+      }
+      const search = q.value.trim().toLowerCase();
+      if (search) {
+        filtered = filtered.filter(m => m.title.toLowerCase().includes(search) || (m.subtitle && m.subtitle.toLowerCase().includes(search)));
+      }
+      return filtered;
+    }
+
+    function render(mods){
+      grid.innerHTML = '';
+      mods.forEach((m, idx) => {
+        const el = document.createElement('div'); 
+        el.className = 'card';
+        el.style.animationDelay = `${idx * 0.1}s`;
+        el.innerHTML = `
+          <div class="thumb" style="background-image:url('${m.thumb}');"></div>
+          <div class="card-body">
+            <div class="card-title">${m.title}</div>
+            <div class="card-sub">${m.subtitle}</div>
+            <div class="badges">${m.tags.map(t=>`<div class='badge'>${t}</div>`).join('')}</div>
+            <div class="card-footer">
+              <div class="small">${m.version} • ${m.size}</div>
+              <a href="${m.url}" class="btn primary" download>Download</a>
+            </div>
+          </div>`;
+        // Card click (not download)
+        el.addEventListener('click', e => {
+          if (e.target.closest('a.btn.primary')) return; // Ignore download button
+          showModal(m);
+        });
+        grid.appendChild(el);
+      });
+      count.textContent = mods.length;
+    }
+
+    // Filter switching
+    filters.addEventListener('click', e => {
+      const tagEl = e.target.closest('.tag');
+      if (!tagEl) return;
+      document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+      tagEl.classList.add('active');
+      activeTag = tagEl.dataset.tag;
+      render(filterMods(allMods));
+    });
+
+    // Search
+    q.addEventListener('input', () => {
+      render(filterMods(allMods));
+    });
+
+    // Get file's last modified date
+    async function getModLastUpdate(modname) {
+      try {
+        const response = await fetch(`/${modname}/lib123.so`, { method: 'HEAD' });
+        if (response.ok) {
+          const lastModified = response.headers.get('last-modified');
+          return lastModified ? new Date(lastModified).toLocaleDateString() : null;
+        }
+      } catch (err) {
+        console.warn(`Could not fetch last update for ${modname}`, err);
+      }
+      return null;
+    }
+
+    // Modal logic
+    async function showModal(mod) {
+      const lastUpdate = mod.modname ? await getModLastUpdate(mod.modname) : null;
+      const tagBadges = mod.tags?.map(t => `<div class="badge" role="tag">${t}</div>`).join('') || '';
+      
+      modalBody.innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:32px;">
+          <div style="flex:1 1 280px;min-width:260px;">
+            <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
+              <img src="${mod.thumb}" alt="${mod.title}" style="width:100%;display:block;transform:scale(1.01);" />
+              <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);"></div>
+            </div>
+            
+            <div style="margin-top:20px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+              <a href="${mod.url}" class="btn primary" style="padding:10px 20px;" download>⬇️ Download Mod</a>
+              <button class="btn" style="padding:10px 16px;" 
+                onclick="navigator.clipboard.writeText('${mod.url}');this.innerHTML='✓ Copied'">
+                🔗 Copy Link
+              </button>
+            </div>
+          </div>
+
+          <div style="flex:1 1 400px;">
+            <h2 style="margin:0 0 8px 0;font-size:26px;background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">${mod.title}</h2>
+            <div style="color:var(--muted);margin-bottom:12px;font-size:15px;">${mod.subtitle || ''}</div>
+
+            <div style="margin:12px 0 20px 0;display:flex;gap:8px;flex-wrap:wrap;">${tagBadges}</div>
+
+            <div style="font-size:14px;line-height:1.8;background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);">
+              <div style="display:grid;grid-template-columns:120px 1fr;gap:8px;">
+                <div><strong>Version:</strong></div>
+                <div>${mod.version || 'Unknown'}</div>
+                
+                <div><strong>Compatibility:</strong></div>
+                <div>${mod.compat || 'Unknown'}</div>
+                
+                <div><strong>Size:</strong></div>
+                <div>${mod.size || 'N/A'}</div>
+                
+                <div><strong>Last Update:</strong></div>
+                <div>${lastUpdate || mod.updated || 'N/A'}</div>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;font-size:14px;line-height:1.7;color:var(--muted);">
+              ${mod.notes ? `<div style="margin-bottom:12px;">
+                <strong style="color:#fff">📝 Notes:</strong><br>${mod.notes}
+              </div>` : ''}
+              
+              ${mod.description ? `<div>
+                <strong style="color:#fff">ℹ️ Description:</strong><br>${mod.description}
+              </div>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      modal.classList.add('show');
+    }
+
+    modalClose.addEventListener('click', () => { 
+      modal.classList.remove('show');
+    });
+    
+    modal.addEventListener('click', e => { 
+      if (e.target === modal) modal.classList.remove('show');
+    });
+
+    loadMods();
+  </script>
+</body>
+</html>
