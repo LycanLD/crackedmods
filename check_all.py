@@ -54,7 +54,7 @@ def run_update_scripts():
 
     total = len(folders)
     total_latest = total_outdated = total_errors = 0
-
+    outdated_mods = []
     # --- Live loading while checking ---
     for i, folder in enumerate(folders, start=1):
         print_banner_with_bar(i - 1, total if total else 1)
@@ -76,6 +76,7 @@ def run_update_scripts():
             if "OUTDATED" in output.upper():
                 color = Colors.YELLOW
                 total_outdated += 1
+                outdated_mods.append(folder)
             elif "ERROR" in output.upper() or result.returncode != 0:
                 color = Colors.RED
                 total_errors += 1
@@ -115,12 +116,33 @@ def run_update_scripts():
           f"{Colors.YELLOW}Outdated:{Colors.RESET} {total_outdated}  |  "
           f"{Colors.RED}Errors:{Colors.RESET} {total_errors}")
     print("-" * 60)
-    print(f"\n{Colors.GRAY}Press Enter to exit...{Colors.RESET}")
 
-    try:
-        input()
-    except EOFError:
-        pass
+    if outdated_mods:
+        print(f"\n{Colors.YELLOW}Outdated mods detected!{Colors.RESET}")
+        print(f"{Colors.GRAY}Press D to download latest libs for outdated mods, or Enter to exit...{Colors.RESET}")
+        choice = input().strip().lower()
+        if choice == 'd':
+            for folder in outdated_mods:
+                print(f"{Colors.CYAN}Downloading latest lib for:{Colors.RESET} {folder}")
+                path = os.path.join(current_dir, folder)
+                try:
+                    result = subprocess.run(
+                        [sys.executable, TARGET_SCRIPT_NAME, "--download"],
+                        cwd=path,
+                        text=True,
+                        capture_output=True,
+                        encoding="utf-8"
+                    )
+                    print(result.stdout.strip())
+                except Exception as e:
+                    print(f"{Colors.RED}ERROR downloading for {folder}: {e}{Colors.RESET}")
+            print(f"\n{Colors.GREEN}Download complete!{Colors.RESET}")
+    else:
+        print(f"\n{Colors.GRAY}Press Enter to exit...{Colors.RESET}")
+        try:
+            input()
+        except EOFError:
+            pass
 
 if __name__ == "__main__":
     run_update_scripts()
